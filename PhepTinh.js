@@ -20,4 +20,6 @@ class PhepTinh {
     }
 }
 
-module.exports = PhepTinh;
+// module.exports = { PhepTinh: PhepTinh };
+module.exports = { PhepTinh };
+// module.exports = PhepTinh ;

@@ -1,5 +1,5 @@
 const express = require('express');
-const PhepTinh = require('./PhepTinh');
+const { PhepTinh } = require('./PhepTinh');
 const app = express();
 
 app.get('/', (req, res) => {
