@@ -14,9 +14,10 @@ app.get('/chao/:name/', (req, res) => {
 });
 
 app.get('/tinh/:tenPhepTinh/:soA/:soB', (req, res) => {
-    const tenPhepTinh = req.params.tenPhepTinh;
-    const soA = req.params.soA;
-    const soB = req.params.soB;
+    // const tenPhepTinh = req.params.tenPhepTinh;
+    // const soA = req.params.soA;
+    // const soB = req.params.soB;
+    const { tenPhepTinh, soA, soB } = req.params;
     const pt = new PhepTinh(tenPhepTinh, +soA, +soB);
     res.send(pt.getResultString());
 });
@@ -31,14 +32,16 @@ class PhepTinh {
     }
 
     getSign() {
-        if (this.tenPhepTinh === 'CONG') return '+';
-        if (this.tenPhepTinh === 'TRU') return '-';
-        if (this.tenPhepTinh === 'CHIA') return '/';
+        const { tenPhepTinh } = this;
+        if (tenPhepTinh === 'CONG') return '+';
+        if (tenPhepTinh === 'TRU') return '-';
+        if (tenPhepTinh === 'CHIA') return '/';
         return '*';
     }
 
     getResultString() {
-        const chuoiPhepTinh = `${this.soA} ${this.getSign()} ${this.soB}`;
+        const { soA, soB } = this;
+        const chuoiPhepTinh = `${soA} ${this.getSign()} ${soB}`;
         return `${chuoiPhepTinh} = ${eval(chuoiPhepTinh)}`;
     }
 }
